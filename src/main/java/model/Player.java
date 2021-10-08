@@ -1,14 +1,20 @@
 package model;
 
 public abstract class Player {
-    int x;
-    int y;
-    Board board;
+    private int x;
+    private int y;
+    private Board board;
+    private BoardElements playerNumber;
 
-    public Player(int x, int y, Board board) {
+    public Player(int y, int x, Board board,BoardElements playerNumber) {
         this.x = x;
         this.y = y;
         this.board = board;
+        this.playerNumber= playerNumber;
+    }
+
+    public BoardElements getPlayerNumber() {
+        return playerNumber;
     }
 
     public int getY() {
@@ -20,7 +26,7 @@ public abstract class Player {
         return x;
     }
 
-    public void move(int x, int y) {
+    public void move(int y, int x) {
         int realX = x * 2 - 2;
         int realY = y * 2 - 2;
         if (
@@ -32,6 +38,7 @@ public abstract class Player {
             if(true) {
                 this.x = realX;
                 this.y = realY;
+                board.setPlayerPosition(this);
             }
         } else {
             throw new IllegalArgumentException();
