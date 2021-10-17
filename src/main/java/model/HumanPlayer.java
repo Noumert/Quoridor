@@ -26,7 +26,7 @@ public class HumanPlayer extends Player {
         int realY1 = y1 * 2 - 2;
         int realX2 = x2 * 2 - 2;
         int realY2 = y2 * 2 - 2;
-        if(Validator.checkPutWall(realY1,realX1,realY2,realX2)){
+        if(Validator.checkPutWall(realY1,realX1,realY2,realX2,board) && walls>0){
             if(realX1 == realX2){
                 board.getBoard()[(realY1+realY2)/2][(realX1+realX2)/2] = BoardElements.WALL;
                 board.getBoard()[(realY1+realY2)/2][(realX1+realX2)/2+1] = BoardElements.WALL;
@@ -37,6 +37,9 @@ public class HumanPlayer extends Player {
                 board.getBoard()[(realY1+realY2)/2+1][(realX1+realX2)/2] = BoardElements.WALL;
                 board.getBoard()[(realY1+realY2)/2+2][(realX1+realX2)/2] = BoardElements.WALL;
             }
+            walls--;
+        }else {
+            throw new IllegalArgumentException();
         }
     }
 

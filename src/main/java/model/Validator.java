@@ -28,7 +28,49 @@ public class Validator {
         return BoardElements.PLAYER1.equals(board.getBoard()[y][x]) || BoardElements.PLAYER2.equals(board.getBoard()[y][x]);
     }
 
-    public static boolean checkPutWall(int y1, int x1, int y2, int x2) {
+    public static boolean checkPutWall(int y1, int x1, int y2, int x2, Board board) {
+        boolean isValid = false;
+        if (x1 > 14 || y1 > 14) {
+            return false;
+        }
+        if (x1 == x2 ^ y1 == y2) {
+            isValid = true;
+        } else {
+            return false;
+        }
+
+        if (y2 - y1 <= 2 && x2 - x1 <= 2) {
+            isValid = true;
+        } else {
+            return false;
+        }
+
+        if (x1 == x2) {
+            if (isWall((y1 + y2) / 2, (x1 + x2) / 2, board) ||
+                    isWall((y1 + y2) / 2, (x1 + x2) / 2 + 1, board) ||
+                    isWall((y1 + y2) / 2, (x1 + x2) / 2 + 2, board)) {
+                return false;
+            }
+        }
+        if (y1 == y2) {
+            if (isWall((y1 + y2) / 2, (x1 + x2) / 2, board) ||
+                    isWall((y1 + y2) / 2 + 1, (x1 + x2) / 2, board) ||
+                    isWall((y1 + y2) / 2 + 2, (x1 + x2) / 2, board)) {
+                return false;
+            }
+        }
+
+        if (checkPutWallWay(board)) {
+            isValid = true;
+        } else {
+            return false;
+        }
+
+        return isValid;
+    }
+
+    private static boolean checkPutWallWay(Board board) {
+        BoardElements[][] boardElements = board.getBoard();
         return true;
     }
 }

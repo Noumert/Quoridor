@@ -54,7 +54,7 @@ public class MainController {
 
     private boolean doFullTurn(View view, Board board, Player player, Scanner scanner, String action, String move, String putWall, int i, String win) {
         do {
-
+            view.printMessage(move);
             if (doTurn(view, board, player, action, move, putWall, scanner)) continue;
             view.drawBoard(board);
             break;
@@ -123,7 +123,7 @@ public class MainController {
             try {
                 player.doStep();
             } catch (Exception e) {
-//                view.printMessage(View.Err);
+                view.printMessage(View.Err);
                 return true;
             }
             board.setPlayerPosition(player);
