@@ -57,7 +57,7 @@ public class AIplayer extends Player {
         int realY1 = y1 * 2 - 2;
         int realX2 = x2 * 2 - 2;
         int realY2 = y2 * 2 - 2;
-        if (Validator.checkPutWall(realY1, realX1, realY2, realX2,board)) {
+        if (Validator.checkPutWall(realY1, realX1, realY2, realX2,board.getBoard())) {
             if (realX1 == realX2) {
                 board.getBoard()[(realY1 + realY2) / 2][(realX1 + realX2) / 2] = BoardElements.WALL;
                 board.getBoard()[(realY1 + realY2) / 2][(realX1 + realX2) / 2 + 1] = BoardElements.WALL;
@@ -75,7 +75,7 @@ public class AIplayer extends Player {
     }
 
     private void move(int realY, int realX) {
-        if (Validator.checkMove(this.y, this.x, realY, realX, board)) {
+        if (Validator.checkMove(this.y, this.x, realY, realX, board.getBoard())) {
             if (Validator.isPlayer(realY, realX, board)) {
                 jump(realY, realX);
             } else {
@@ -100,7 +100,7 @@ public class AIplayer extends Player {
             difference = realY - this.y;
             testY += (difference * 2);
         }
-        if (Validator.checkMove(realY, realX, testY, testX, board)) {
+        if (Validator.checkMove(realY, realX, testY, testX, board.getBoard())) {
             this.y = testY;
             this.x = testX;
         } else {
