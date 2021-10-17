@@ -4,9 +4,10 @@ import model.Board;
 import model.BoardElements;
 
 public class View {
+    public static final String Continue ="Continue(N/Any key to continue):";
     public static final String Greet ="Welcome to game Quoridor";
-    public static final String Player1 ="User 1 is Human or Ai:";
-    public static final String Player2 ="User 2 is Human or Ai:";
+    public static final String Player1 ="User 1 is Human or Ai(h/a):";
+    public static final String Player2 ="User 2 is Human or Ai(h/a):";
     public static final String TurnP1 ="User 1 move(x,y):";
     public static final String TurnP2 ="User 2 move(x,y):";
     public static final String Win1 ="User 1 Win!";
@@ -20,7 +21,7 @@ public class View {
     public void drawBoard(Board board){
         int boardSize = board.getBoardSize();
         BoardElements[][] boardElements = board.getBoard();
-        System.out.println("  1  2 3 4 5  6 7 8  9");
+        System.out.println("  1  2   3  4  5  6   7  8  9");
         int numbers = 1;
         for (int i = 0; i < boardSize; i++) {
             if(i%2==0){
@@ -34,12 +35,16 @@ public class View {
                     case PLAYER1 -> System.out.print("1");
                     case PLAYER2 -> System.out.print("2");
                     case EMPTY_CELL -> System.out.print("▦");
-                    case EMPTY_CELL_FOR_WALL -> System.out.print(" ");
+                    case EMPTY_CELL_FOR_WALL -> System.out.print("  ");
                     case WALL -> {
                         if (i % 2 == 0) {
-                            System.out.println("—");
+                            System.out.print("| ");
                         } else {
-                            System.out.print("|");
+                            if(j % 2!= 0){
+                                System.out.print("  ");
+                            }else {
+                                System.out.print("一");
+                            }
                         }
                     }
                 }
