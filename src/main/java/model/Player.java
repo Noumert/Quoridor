@@ -33,5 +33,7 @@ public abstract class Player {
 
     public abstract void doStep();
 
-    public abstract void doStep(int y,int x);
+    public abstract void doMove(int y, int x);
+
+    public abstract void doStepWall(int y1,int x1,int y2,int x2);
 }

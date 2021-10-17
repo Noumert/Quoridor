@@ -11,19 +11,31 @@ public class AIplayer extends Player{
     @Override
     public void doStep() {
         Random random = new Random();
-        int deside = random.nextInt(1,5);
-        switch (deside){
-            case 1->move(y,x+2);
-            case 2->move(y,x-2);
-            case 3->move(y-2,x);
-            case 4->move(y+2,x);
+        if(random.nextInt(1,3)==1) {
+            int deside = random.nextInt(1, 5);
+            switch (deside) {
+                case 1 -> move(y, x + 2);
+                case 2 -> move(y, x - 2);
+                case 3 -> move(y - 2, x);
+                case 4 -> move(y + 2, x);
+            }
+        }else {
+            
+            putWall();
         }
-
     }
 
     @Override
-    public void doStep(int y, int x) {
+    public void doMove(int y, int x) {
         //nothing
+    }
+
+    @Override
+    public void doStepWall(int y1, int x1, int y2, int x2) {
+        //nothing
+    }
+
+    private void putWall() {
     }
 
     private void move(int realY,int realX) {

@@ -8,8 +8,12 @@ public class View {
     public static final String Greet ="Welcome to game Quoridor";
     public static final String Player1 ="User 1 is Human or Ai(h/a):";
     public static final String Player2 ="User 2 is Human or Ai(h/a):";
-    public static final String TurnP1 ="User 1 move(x,y):";
-    public static final String TurnP2 ="User 2 move(x,y):";
+    public static final String ActionP1 ="User 1 what action(m/w):";
+    public static final String ActionP2 ="User 2 what action(m/w)::";
+    public static final String MoveP1 ="User 1 move(x,y):";
+    public static final String MoveP2 ="User 2 move(x,y):";
+    public static final String PutWallP1 ="User 1 put wall(x,y)(x,y):";
+    public static final String PutWallP2 ="User 2 put wall(x,y)(x,y):";
     public static final String Win1 ="User 1 Win!";
     public static final String Win2 ="User 2 Win!";
     public static final String Err ="Invalid move!";
